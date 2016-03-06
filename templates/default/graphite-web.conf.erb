@@ -1,0 +1,15 @@
+# /etc/init/graphite-web.conf
+# managed by chef
+
+respawn
+respawn limit 15 5
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+setuid _graphite
+setgid _graphite
+
+script
+    graphite-manage runserver
+end script
